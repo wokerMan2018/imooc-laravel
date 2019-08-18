@@ -1,4 +1,4 @@
-#轻松学会Laravel-扩展篇
+# 轻松学会Laravel-扩展篇
 
 创建资源模型控制器
 ```
@@ -9,7 +9,7 @@ php artisan make:controller PhotoController --resource --model=Photo
 ```
 {{ method_field('PUT') }}
 ```
- 
+
 任何情况下在你的应用程序中定义 HTML 表单时都应该包含 CSRF 令牌隐藏域，这样 CSRF 保护中间件才可以验证请求
 ```
 {{ csrf_field() }}
@@ -49,7 +49,7 @@ php artisan make:controller PhotoController --resource --model=Photo
 </script>
 ```
 
-###表单验证
+### 表单验证
 ```
 // 控制器验证
 $this->validate($request, [

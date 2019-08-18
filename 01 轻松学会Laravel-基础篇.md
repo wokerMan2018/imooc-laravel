@@ -1,8 +1,9 @@
-#轻松学会Laravel-基础篇
+# 轻松学会Laravel-基础篇
 
-######Laravel 一键安装包下载：[http://www.golaravel.com/download/](http://www.golaravel.com/download/)
+###### Laravel 一键安装包下载：[http://www.golaravel.com/download/](http://www.golaravel.com/download/)
 
-###路由参数
+### 路由参数
+
 ```
 Route::get('user/{id}', function($id){
 	return $id;
@@ -37,7 +38,8 @@ Route::get('user/{name?}', function($name='zhangsan'){
 不符合条件的路由：http://www.zhulinjie.com/laravel/public/user/1
 ![](image/screenshot_1482508768893.png)
 
-###别名路由
+### 别名路由
+
 ```
 Route::get('user/user-personal', ['as'=>'personal', function(){
 	return route('personal');
@@ -47,7 +49,8 @@ Route::get('user/user-personal', ['as'=>'personal', function(){
 
 ![](image/screenshot_1482509183202.png)
 
-###路由群组
+### 路由群组
+
 ```
 Route::group(['prefix'=>'admin'], function(){
 	Route::get('user/user-personal', ['as'=>'personal', function(){
@@ -59,8 +62,9 @@ Route::group(['prefix'=>'admin'], function(){
 
 ![](image/screenshot_1482509510013.png)
 
-###控制器
+### 控制器
 routes.php
+
 ```
 Route::get('user/personal', [
 	'uses' => 'PersonalController@index',
@@ -84,8 +88,9 @@ class PersonalController extends Controller
 ```
 ![](image/screenshot_1482511083393.png)
 
-###模型
+### 模型
 Personal.php
+
 ```
 <?php
 
@@ -116,7 +121,8 @@ class PersonalController extends Controller
 ```
 ![](image/screenshot_1482515920062.png)
 
-###使用DB facade实现CURD
+### 使用DB facade实现CURD
+
 ```
 CREATE TABLE `student` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '学生表',
@@ -169,7 +175,8 @@ class StudentController extends Controller
 ```
 ![](image/screenshot_1482516058916.png)
 
-###查询构造器新增数据
+### 查询构造器新增数据
+
 ```
 <?php
 
@@ -198,7 +205,8 @@ class StudentController extends Controller
 }
 ```
 
-###查询构造器更新数据
+### 查询构造器更新数据
+
 ```
 <?php
 
@@ -236,7 +244,8 @@ class StudentController extends Controller
 }
 ```
 
-###查询构造器删除数据
+### 查询构造器删除数据
+
 ```
 <?php
 
@@ -257,7 +266,8 @@ class StudentController extends Controller
 }
 ```
 
-###查询构造器查询数据
+### 查询构造器查询数据
+
 ```
 <?php
 
@@ -333,7 +343,8 @@ chunk() 方法浏览器中运行效果：
 
 ![](image/screenshot_1482572230629.png)
 
-###查询构造器中的聚合函数
+### 查询构造器中的聚合函数
+
 ```
 <?php
 
@@ -362,8 +373,9 @@ class StudentController extends Controller
 }
 ```
 
-###Eloquent ORM简介、模型的建立及查询数据
+### Eloquent ORM简介、模型的建立及查询数据
 Student.php
+
 ```
 <?php
 
@@ -426,8 +438,9 @@ class StudentController extends Controller
 }
 ```
 
-###Eloquent ORM中新增数据、自定义时间戳及批量赋值的使用 
+### Eloquent ORM中新增数据、自定义时间戳及批量赋值的使用 
 Student.php
+
 ```
 <?php
 
@@ -502,7 +515,8 @@ class StudentController extends Controller
 }
 ```
 
-###使用Eloquent ORM修改数据
+### 使用Eloquent ORM修改数据
+
 ```
 <?php
 
@@ -528,7 +542,8 @@ class StudentController extends Controller
 }
 ```
 
-###使用Eloquent ORM删除数据
+### 使用Eloquent ORM删除数据
+
 ```
 <?php
 
@@ -559,8 +574,9 @@ class StudentController extends Controller
 }
 ```
 
-###Blade模板引擎-流程控制
+### Blade模板引擎-流程控制
 StudentController.php
+
 ```
 <?php
 
@@ -655,7 +671,7 @@ class StudentController extends Controller
 ```
 ![](image/screenshot_1483029951119.png)
 
-###Blade模板引擎-模板中的URL
+### Blade模板引擎-模板中的URL
 >url() 通过路由的名称生成url  
 >action() 通过指定控制器和方法名生成url  
 >route() 通过路由的别名生成url  

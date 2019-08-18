@@ -1,10 +1,11 @@
-#轻松学会Laravel-高级篇
+# 轻松学会Laravel-高级篇
 
-###Composer快速入门
+### Composer快速入门
+
 >Composer官网：[https://getcomposer.org/](https://getcomposer.org/)  
 >Composer中文网：[http://www.phpcomposer.com](http://www.phpcomposer.com)
 
-###通过composer.phar安装Composer
+### 通过composer.phar安装Composer
 局部安装：将composer.phar文件复制到任意目录（比如项目根目录下），然后通过`php composer.phar`指令即可以使用Composer了
 
 全局安装：
@@ -14,7 +15,8 @@ chmod u+x composer.phar
 mv composer.phar /bin/composer
 ```
 
-###Composer中国全量镜像
+### Composer中国全量镜像
+
 >http://pkg.phpcomposer.com/
 
 查看当前的镜像地址
@@ -37,7 +39,8 @@ composer config repo.packagist composer https://packagist.phpcomposer.com
 ```
 注：如果没有composer.json文件，需要新建一个composer.json文件，还需要在里面写一对{}号，不然执行这个命令会报错
 
-###使用Composer
+### 使用Composer
+
 ```
 mkdir demo
 cd demo
@@ -78,8 +81,9 @@ vi composer.json
 ```
 composer update
 
-###使用Composer安装Laravel
+### 使用Composer安装Laravel
 通过Composer Create-Project 命令安装 Laravel
+
 ```
 composer search laravel
 composer show --all laravel/laravel
@@ -103,8 +107,9 @@ laravel new laravel2
 laravel new test --dev
 ```
 
-###Artisan基本用法
+### Artisan基本用法
 查看所有可用的Artisan的命令（list）
+
 ```
 php artisan
 php artisan list
@@ -123,7 +128,8 @@ php artisan make:model Student
 php artisan make:middleware Activity
 ```
 
-###Laravel中的用户认证（Auth）
+### Laravel中的用户认证（Auth）
+
 ```
 // 生成Auth所需文件
 php artisan make:auth
@@ -136,14 +142,15 @@ php artisan migrate
 {{ asset('js/app.js') }}
 ```
 
-###Laravel中的数据迁移
-######新建迁移文件
+### Laravel中的数据迁移
+###### 新建迁移文件
 通过 `php artisan make:migration create_students_table` 来新建迁移文件。--table和--create参数可以用来指定数据表名称，以及迁移文件是否要建立新的数据表
 
 生成模型的同时生成迁移文件 `php artisan make:model Student -m`
 
-######下面咱们以students表来新建一个迁移文件
+###### 下面咱们以students表来新建一个迁移文件
 表结构如下
+
 ```
 create table if not exists students(
 	id int auto_increment primary key,
@@ -182,8 +189,9 @@ php artisan migrate
 ```
 ![](image/screenshot_1486093918968.png)
 
-###Laravel中的数据填充
+### Laravel中的数据填充
 创建一个填充文件，并完善填充文件
+
 ```
 php artisan make:seeder StudentTableSeeder
 ```
@@ -238,7 +246,7 @@ php artisan db:seed
 
 ![](image/screenshot_1486652467473.png)
 
-###Laravel中的文件上传
+### Laravel中的文件上传
 Laravel的文件系统是基于Frank de Jonge的Flysystem扩展包，提供了简单的接口，可以操作本地端空间、Amazon、S3、Rackspace Cloud Storage，可以非常简单的切换不同保存方式，但仍使用相同的API操作
 
 配置文件位置：config/filesystems.php
@@ -361,7 +369,7 @@ resources/views/student/upload.blade.php（复制的是 Laravel中的用户认�
 
 ![](image/screenshot_1486656049790.png)
 
-###Laravel中的邮件发送
+### Laravel中的邮件发送
 配置文件：config/mail.php
 Mail::raw() 发送纯文本格式 			Mail::send() 发送html格式
 
@@ -418,7 +426,7 @@ resources/views/student/mail.blade.php
 
 ![](image/screenshot_1486784315481.png)
 
-###Laravel中的缓存使用
+### Laravel中的缓存使用
 配置文件位置：config/cache.php
 
 routes/web.php
@@ -475,9 +483,10 @@ public function cache2(){
 }
 ```
 
-###Laravel中的错误与日志
-######Debug模式
+### Laravel中的错误与日志
+###### Debug模式
 配置文件位置：config/app.php
+
 >进行本地开发时，应该配置APP_DEBUG环境变量为true，在上线环境，这个值应该永远为false
 
 HTTP异常
@@ -524,7 +533,7 @@ public function error(){
 
 ![](image/screenshot_1486810167480.png)
 
-###Laravel中的队列应用
+### Laravel中的队列应用
 Laravel队列服务为各种不同的后台队列提供了统一的API，允许推迟耗时任务（例如发送邮件）的执行，从而大幅提高web请求速度
 
 配置文件位置：config/queue.php

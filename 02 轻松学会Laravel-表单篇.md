@@ -1,7 +1,8 @@
-#轻松学会Laravel-表单篇
+# 轻松学会Laravel-表单篇
 
-###Controller之Request
+### Controller之Request
 StudentController.php
+
 ```
 <?php
 
@@ -106,7 +107,7 @@ class StudentController extends Controller
 ```
 ![](image/screenshot_1483176867622.png)
 
-###Controller之Session
+### Controller之Session
 `config/session.php` session配置文件  
 
 app/Http/Kernel.php
@@ -202,8 +203,9 @@ class StudentController extends Controller
 ```
 ![](image/screenshot_1483180507725.png)
 
-###Controller之Response
+### Controller之Response
 routes.php
+
 ```
 Route::group(['middleware' => ['web']], function () {
     Route::get('student', ['uses' => 'StudentController@index', 'as' => 'student']);
@@ -256,7 +258,7 @@ class StudentController extends Controller
 
 ![](image/screenshot_1483182335061.png)
 
-###Controller之Middleware
+### Controller之Middleware
 routes.php
 ```
 // 宣传阶段
