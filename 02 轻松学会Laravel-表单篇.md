@@ -3,7 +3,7 @@
 ### Controller之Request
 StudentController.php
 
-```
+```php
 <?php
 
 namespace App\Http\Controllers;
@@ -24,7 +24,7 @@ class StudentController extends Controller
 ![](image/screenshot_1483174905195.png)
 
 StudentController.php
-```
+```php
 <?php
 
 namespace App\Http\Controllers;
@@ -49,7 +49,7 @@ class StudentController extends Controller
 ![](image/screenshot_1483175044756.png)
 
 StudentController.php
-```
+```php
 <?php
 
 namespace App\Http\Controllers;
@@ -115,7 +115,7 @@ app/Http/Kernel.php
 ![](image/screenshot_1483548281797.png)
 
 routes.php
-```
+```php
 Route::group(['middleware' => ['web']], function () {
     Route::get('student', [
     	'uses' => 'StudentController@index',
@@ -125,7 +125,7 @@ Route::group(['middleware' => ['web']], function () {
 ```
 
 StudentController.php
-```
+```php
 <?php
 
 namespace App\Http\Controllers;
@@ -206,7 +206,7 @@ class StudentController extends Controller
 ### Controller之Response
 routes.php
 
-```
+```php
 Route::group(['middleware' => ['web']], function () {
     Route::get('student', ['uses' => 'StudentController@index', 'as' => 'student']);
     Route::get('response', ['uses' => 'StudentController@response', 'as' => 'response']);
@@ -214,7 +214,7 @@ Route::group(['middleware' => ['web']], function () {
 ```
 
 StudentController.php
-```
+```php
 <?php
 
 namespace App\Http\Controllers;
@@ -260,7 +260,7 @@ class StudentController extends Controller
 
 ### Controller之Middleware
 routes.php
-```
+```php
 // 宣传阶段
 Route::get('student', ['uses' => 'StudentController@index', 'as' => 'student']);
 
@@ -271,7 +271,7 @@ Route::group(['middleware' => ['activity']], function () {
 ```
 
 StudentController.php
-```
+```php
 <?php
 
 namespace App\Http\Controllers;
@@ -293,7 +293,7 @@ class StudentController extends Controller
 ```
 
 Activity.php
-```
+```php
 <?php
 
 namespace App\Http\Middleware;
@@ -312,7 +312,7 @@ class Activity{
 ```
 
 Kernel.php
-```
+```php
 protected $routeMiddleware = [
     'auth' => \App\Http\Middleware\Authenticate::class,
     ...

@@ -1,22 +1,22 @@
 # 轻松学会Laravel-扩展篇
 
 创建资源模型控制器
-```
+```bash
 php artisan make:controller PhotoController --resource --model=Photo
 ```
 
 发送 PUT，PATCH 或者 DELETE 请求，你需要添加一个 _method 隐藏域字段来伪造 HTTP 动作。method_field 辅助函数可以为你创建这个字段
-```
+```html
 {{ method_field('PUT') }}
 ```
 
 任何情况下在你的应用程序中定义 HTML 表单时都应该包含 CSRF 令牌隐藏域，这样 CSRF 保护中间件才可以验证请求
-```
+```html
 {{ csrf_field() }}
 ```
 
 资源控制器 删除
-```
+```html
 <a href="javascript:;" class="delete" data-id="{{ $student->id }}">删除</a>
 
 <script>
@@ -50,7 +50,7 @@ php artisan make:controller PhotoController --resource --model=Photo
 ```
 
 ### 表单验证
-```
+```php
 // 控制器验证
 $this->validate($request, [
     'Student.name' => 'required|min:2|max:20',
@@ -86,7 +86,7 @@ if($validator->fails()){
 }*/
 ```
 
-```
+```html
 <!-- 成功提示框 -->
 @if(\Session::has('success'))
     <div class="alert alert-success alert-dismissible" role="alert">
@@ -108,7 +108,7 @@ if($validator->fails()){
 @endif
 ```
 
-```
+```html
 <!-- 所有的错误提示 -->
 @if(count($errors))
 <div class="alert alert-danger">
@@ -127,14 +127,14 @@ if($validator->fails()){
 @endif
 ```
 
-```
+```html
 {{ $errors->first('Student.name') }}
 {{ $errors->first('Student.age') }}
 {{ $errors->first('Student.sex') }}
 ```
 
 模型中定义sex()方法
-```
+```php
 const SEX_UN = 10;
 const SEX_BOY = 20;
 const SEX_GRIL = 30;
@@ -155,7 +155,7 @@ public function sex($ind = null){
 ```
 
 @parent继承父模版内容
-```
+```html
 <!-- 尾部 -->
 @section('footer')
 <div class="jumbotron" style="margin:0;">
@@ -166,7 +166,7 @@ public function sex($ind = null){
 @show
 ```
 
-```
+```html
 @section('footer')
 	@parent
     新内容

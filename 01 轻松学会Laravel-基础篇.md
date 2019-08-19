@@ -4,7 +4,7 @@
 
 ### 路由参数
 
-```
+```php
 Route::get('user/{id}', function($id){
 	return $id;
 });
@@ -13,7 +13,7 @@ Route::get('user/{id}', function($id){
 
 ![](image/screenshot_1482508955063.png)
 
-```
+```php
 Route::get('user/{name?}', function($name='zhangsan'){
 	return $name;
 });
@@ -26,7 +26,7 @@ Route::get('user/{name?}', function($name='zhangsan'){
 
 ![](image/screenshot_1482509088598.png)
 
-```
+```php
 Route::get('user/{name?}', function($name='zhangsan'){
 	return $name;
 })->where('name', '[A-Za-z]+');
@@ -40,7 +40,7 @@ Route::get('user/{name?}', function($name='zhangsan'){
 
 ### 别名路由
 
-```
+```php
 Route::get('user/user-personal', ['as'=>'personal', function(){
 	return route('personal');
 }]);
@@ -51,7 +51,7 @@ Route::get('user/user-personal', ['as'=>'personal', function(){
 
 ### 路由群组
 
-```
+```php
 Route::group(['prefix'=>'admin'], function(){
 	Route::get('user/user-personal', ['as'=>'personal', function(){
 		return route('personal');
@@ -65,14 +65,14 @@ Route::group(['prefix'=>'admin'], function(){
 ### 控制器
 routes.php
 
-```
+```php
 Route::get('user/personal', [
 	'uses' => 'PersonalController@index',
 	'as' => 'personal'
 ]);
 ```
 PersonalController.php
-```
+```php
 <?php
 
 namespace App\Http\Controllers;
@@ -91,7 +91,7 @@ class PersonalController extends Controller
 ### 模型
 Personal.php
 
-```
+```php
 <?php
 
 namespace App;
@@ -105,7 +105,7 @@ class Personal extends Model{
 }
 ```
 PersonalController.php
-```
+```php
 <?php
 
 namespace App\Http\Controllers;
@@ -123,7 +123,7 @@ class PersonalController extends Controller
 
 ### 使用DB facade实现CURD
 
-```
+```sql
 CREATE TABLE `student` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '学生表',
   `name` varchar(255) NOT NULL DEFAULT '' COMMENT '姓名',
@@ -136,14 +136,14 @@ CREATE TABLE `student` (
 ```
 
 routes.php
-```
+```php
 Route::get('student', [
 	'uses' => 'StudentController@index',
 	'as' => 'student'
 ]);
 ```
 StudentController.php
-```
+```php
 <?php
 
 namespace App\Http\Controllers;
@@ -177,7 +177,7 @@ class StudentController extends Controller
 
 ### 查询构造器新增数据
 
-```
+```php
 <?php
 
 namespace App\Http\Controllers;
@@ -207,7 +207,7 @@ class StudentController extends Controller
 
 ### 查询构造器更新数据
 
-```
+```php
 <?php
 
 namespace App\Http\Controllers;
@@ -246,7 +246,7 @@ class StudentController extends Controller
 
 ### 查询构造器删除数据
 
-```
+```php
 <?php
 
 namespace App\Http\Controllers;
@@ -268,7 +268,7 @@ class StudentController extends Controller
 
 ### 查询构造器查询数据
 
-```
+```php
 <?php
 
 namespace App\Http\Controllers;
@@ -345,7 +345,7 @@ chunk() 方法浏览器中运行效果：
 
 ### 查询构造器中的聚合函数
 
-```
+```php
 <?php
 
 namespace App\Http\Controllers;
@@ -376,7 +376,7 @@ class StudentController extends Controller
 ### Eloquent ORM简介、模型的建立及查询数据
 Student.php
 
-```
+```php
 <?php
 
 namespace App;
@@ -393,7 +393,7 @@ class Student extends Model{
 ```
 
 StudentController.php
-```
+```php
 <?php
 
 namespace App\Http\Controllers;
@@ -441,7 +441,7 @@ class StudentController extends Controller
 ### Eloquent ORM中新增数据、自定义时间戳及批量赋值的使用 
 Student.php
 
-```
+```php
 <?php
 
 namespace App;
@@ -477,7 +477,7 @@ class Student extends Model{
 ```
 
 StudentController.php
-```
+```php
 <?php
 
 namespace App\Http\Controllers;
@@ -517,7 +517,7 @@ class StudentController extends Controller
 
 ### 使用Eloquent ORM修改数据
 
-```
+```php
 <?php
 
 namespace App\Http\Controllers;
@@ -544,7 +544,7 @@ class StudentController extends Controller
 
 ### 使用Eloquent ORM删除数据
 
-```
+```php
 <?php
 
 namespace App\Http\Controllers;
@@ -577,7 +577,7 @@ class StudentController extends Controller
 ### Blade模板引擎-流程控制
 StudentController.php
 
-```
+```php
 <?php
 
 namespace App\Http\Controllers;
@@ -595,7 +595,7 @@ class StudentController extends Controller
 ```
 
 student.blade.php
-```
+```HTML
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -612,7 +612,7 @@ student.blade.php
 ![](image/screenshot_1483028893123.png)
 
 StudentController.php
-```
+```php
 <?php
 
 namespace App\Http\Controllers;
@@ -631,7 +631,7 @@ class StudentController extends Controller
 ```
 
 student.blade.php
-```
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -652,7 +652,7 @@ student.blade.php
 ![](image/screenshot_1483029872152.png)
 
 StudentController.php
-```
+```php
 <?php
 
 namespace App\Http\Controllers;
@@ -677,7 +677,7 @@ class StudentController extends Controller
 >route() 通过路由的别名生成url  
 
 StudentController.php
-```
+```php
 <?php
 
 namespace App\Http\Controllers;
@@ -695,7 +695,7 @@ class StudentController extends Controller
 ```
 
 student.blade.php
-```
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>

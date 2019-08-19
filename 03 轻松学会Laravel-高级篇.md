@@ -10,7 +10,7 @@
 
 全局安装：
 composer下载：https://getcomposer.org/composer.phar
-```
+```bash
 chmod u+x composer.phar
 mv composer.phar /bin/composer
 ```
@@ -20,13 +20,13 @@ mv composer.phar /bin/composer
 >http://pkg.phpcomposer.com/
 
 查看当前的镜像地址
-```
+```bash
 composer config -gl
 ```
 
 Packagist 镜像用法：
 全局配置
-```
+```bash
 composer config -g repo.packagist composer https://packagist.phpcomposer.com
 // 还原初始配置
 composer config -g repo.packagist composer https?://packagist.org
@@ -34,14 +34,14 @@ composer config -g repo.packagist composer https?://packagist.org
 
 单个项目配置
 打开命令行窗口（windows用户）或控制台（Linux、Mac 用户），进入你的项目的根目录（也就是 composer.json 文件所在目录），执行如下命令：
-```
+```bash
 composer config repo.packagist composer https://packagist.phpcomposer.com
 ```
 注：如果没有composer.json文件，需要新建一个composer.json文件，还需要在里面写一对{}号，不然执行这个命令会报错
 
 ### 使用Composer
 
-```
+```bash
 mkdir demo
 cd demo
 composer init
@@ -49,18 +49,18 @@ composer config repo.packagist composer https://packagist.phpcomposer.com
 ```
 
 搜索（search）
-```
+```bash
 composer search monolog
 ```
 
 展示（show）
-```
+```bash
 composer show --all monolog/monolog
 ```
 
 申明依赖（require）
 vi composer.json
-```
+```php
 "require": {
     "monolog/monolog":"1.21.*",
     "symfony/http-foundation": "^3.2"
@@ -68,13 +68,14 @@ vi composer.json
 ```
 
 安装（install）
-```
+```bash
 composer install
 ```
 
 更新（update）
 vi composer.json
-```
+
+```php
 "require": {
     "monolog/monolog":"1.21.*"
 },
@@ -84,7 +85,7 @@ composer update
 ### 使用Composer安装Laravel
 通过Composer Create-Project 命令安装 Laravel
 
-```
+```bash
 composer search laravel
 composer show --all laravel/laravel
 composer create-project laravel/laravel --prefer-dist blog
@@ -92,7 +93,7 @@ composer create-project laravel/laravel shop --prefer-dist "5.3.*"		// 安装某
 ```
 
 Laravel 安装器
-```
+```bash
 // 使用 Composer 下载 Laravel 安装包
 composer global require "laravel/installer"
 // 再将 ~/.composer/vendor/bin 路径加到 PATH
@@ -110,7 +111,7 @@ laravel new test --dev
 ### Artisan基本用法
 查看所有可用的Artisan的命令（list）
 
-```
+```bash
 php artisan
 php artisan list
 ```
@@ -118,7 +119,7 @@ php artisan list
 查看命令的帮助信息（help）
 php artisan help make:controller
 
-```
+```bash
 composer create-project laravel/laravel laravel53 --prefer-dist "5.3.*"
 // 创建控制器
 php artisan make:controller StudentController
@@ -130,14 +131,14 @@ php artisan make:middleware Activity
 
 ### Laravel中的用户认证（Auth）
 
-```
+```bash
 // 生成Auth所需文件
 php artisan make:auth
 // 执行迁移
 php artisan migrate
 ```
 通过访问 http://192.168.99.100:8080/home 就可以进行注册登录了，如果访问出现了样式问题，只需要将 resources/views/layouts/app.blade.php 文件中引入css和引入js的路径改为如下即可：
-```
+```php
 {{ asset('css/app.css') }}
 {{ asset('js/app.js') }}
 ```
@@ -151,7 +152,7 @@ php artisan migrate
 ###### 下面咱们以students表来新建一个迁移文件
 表结构如下
 
-```
+```sql
 create table if not exists students(
 	id int auto_increment primary key,
     name varchar(255) not null default '' comment '姓名',
@@ -162,13 +163,13 @@ create table if not exists students(
 )engine=innodb default charset utf8 auto_increment=1001 comment='学生表';
 ```
 
-```
+```bash
 php artisan make:migration create_students_table --create=students
 php artisan make:model Article -m
 ```
 
 2017_02_03_033958_create_students_table.php
-```
+```php
 // 编辑（自定义）迁移文件
 public function up()
 {
@@ -184,7 +185,7 @@ public function up()
 ```
 
 生成数据表
-```
+```bash
 php artisan migrate
 ```
 ![](image/screenshot_1486093918968.png)
@@ -192,27 +193,27 @@ php artisan migrate
 ### Laravel中的数据填充
 创建一个填充文件，并完善填充文件
 
-```
+```bash
 php artisan make:seeder StudentTableSeeder
 ```
 
 执行单个填充文件
-```
+```bash
 php artisan db:seed --class=StudentTableSeeder
 ```
 
 批量执行填充文件
-```
+```bash
 php artisan db:seed
 ```
 
 数据填充实例
-```
+```bash
 php artisan make:seeder StudentTableSeeder
 ```
 
 database/seeds/StudentTableSeeder.php
-```
+```php
 public function run()
 {
     DB::table('students')->insert([
@@ -222,12 +223,12 @@ public function run()
 }
 ```
 
-```
+```bash
 php artisan db:seed --class=StudentTableSeeder
 ```
 
 database/seeds/DatabaseSeeder.php
-```
+```php
 public function run()
 {
     // $this->call(UsersTableSeeder::class);
@@ -236,7 +237,7 @@ public function run()
 }
 ```
 
-```
+```bash
 php artisan db:seed
 ```
 
@@ -253,7 +254,7 @@ Laravel的文件系统是基于Frank de Jonge的Flysystem扩展包，提供了�
 
 文件上传实例
 config/filesystems.php
-```
+```php
 'disks' => [
 
     'local' => [
@@ -284,12 +285,12 @@ config/filesystems.php
 ```
 
 routes/web.php
-```
+```php
 Route::any('/upload', 'StudentController@upload');
 ```
 
 app/Http/Controller/StudentController
-```
+```php
 <?php
 
 namespace App\Http\Controllers;
@@ -330,7 +331,7 @@ class StudentController extends Controller
 ```
 
 resources/views/student/upload.blade.php（复制的是 Laravel中的用户认证（Auth）小节生成的login.blade.php）
-```
+```html
 @extends('layouts.app')
 
 @section('content')
@@ -375,7 +376,7 @@ Mail::raw() 发送纯文本格式 			Mail::send() 发送html格式
 
 第一种发送方式
 .env
-```
+```php
 MAIL_DRIVER=smtp
 MAIL_HOST=smtp.163.com
 MAIL_PORT=465
@@ -387,12 +388,12 @@ MAIL_FROM_NAME='jiezeal'
 ```
 
 routes/web.php
-```
+```php
 Route::any('/mail', 'StudentController@mail');
 ```
 
 app/Http/Controller/StudentController
-```
+```php
 use Mail;	
 
 public function mail(){
@@ -409,7 +410,7 @@ public function mail(){
 
 第二种发送方式
 app/Http/Controller/StudentController
-```
+```php
 public function mail(){
 	// 第二种发送方式 发送html
 	Mail::send('student.mail', ['name' => 'jiezeal', 'age' => 18], function ($message){
@@ -420,7 +421,7 @@ public function mail(){
 ```
 
 resources/views/student/mail.blade.php
-```
+```html
 <h1>Hello {{ $name }} {{ $age }}</h1>
 ```
 
@@ -430,13 +431,13 @@ resources/views/student/mail.blade.php
 配置文件位置：config/cache.php
 
 routes/web.php
-```
+```php
 Route::any('/cache1', 'StudentController@cache1');
 Route::any('/cache2', 'StudentController@cache2');
 ```
 
 app/Http/Controller/StudentController
-```
+```php
 use Illuminate\Support\Facades\Cache;
 
 public function cache1(){
@@ -496,12 +497,12 @@ HTTP异常
 >Laravel日志工具基于强大的Monolog库，提供了single、daily、syslog和errorlog日志模式，以及debug、info、notice、warning、error、critical和alert七个错误级别
 
 routes/web.php
-```
+```php
 Route::any('/error', 'StudentController@error');
 ```
 
 app/Http/Controller/StudentController
-```
+```php
 use Illuminate\Support\Facades\Log;
 
 public function error(){
@@ -540,18 +541,18 @@ Laravel队列服务为各种不同的后台队列提供了统一的API，允许�
 
 主要步骤
 迁移队列需要的数据表
-```
+```bash
 php artisan queue:table
 php artisan migrate
 ```
 
 编写任务类
-```
+```bash
 php artisan make:job SendEmail
 ```
 
 app/SendEmail.php
-```
+```php
 <?php
 
 namespace App\Jobs;
@@ -594,12 +595,12 @@ class SendEmail implements ShouldQueue
 ```
 
 routes/web.php
-```
+```php
 Route::any('/queue', 'StudentController@queue');
 ```
 
 app/Http/Controller/StudentController
-```
+```php
 public function queue(){
 	dispatch(new SendEmail('jiezeal@foxmail.com'));
 }
@@ -609,12 +610,12 @@ public function queue(){
 浏览器访问 http://192.168.99.100:8080/queue
 
 运行队列监听器
-```
+```bash
 php artisan queue:listen
 ```
 
 处理失败任务
-```
+```bash
 php artisan queue:failed-table
 php artisan migrate
 // 查看执行失败的任务
